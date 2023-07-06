@@ -1,7 +1,7 @@
 runtime: python38
 entrypoint: gunicorn -b :$PORT slave:app  --timeout 360000 --preload
 env_variables:
-  BUCKET: your-bucket.appspot.com #gcloud bucket where you want to store the outputs
+  BUCKET: gs://scraper-gcloud-appengine #gcloud bucket where you want to store the outputs
   CLOUD: True #env variable which says whether the Slave is running locally or in the cloud
 instance_class: B2  #Bs are basic instances without automatic scaling. Necessary to restart them manually
 manual_scaling:

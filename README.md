@@ -16,6 +16,8 @@ To test this locally clone the repo  and run:
 * `pip install -r requirements.txt`
 * `python master.py` in one terminal
 * `gunicorn -b :8080 slave:app  --timeout 360000 --preload` in a different terminal
+* `poetry run waitress-serve --listen 127.0.0.1:8080 slave:app` in windows
+* `gcloud builds submit --region=eu-west1` to deploy
 
 
 

@@ -1,5 +1,10 @@
-,query,start,end
-0,Apple,2019-01-01,2019-01-06
-1,Tesla,2019-03-01,2019-03-03
-2,Space-X,2019-02-01,2019-02-03
-3,Warren Buffet,2019-03-01,2019-03-03
+,query,start,end,type
+0,concessionnaire camion paris,2023-06-01,2023-06-18,maps
+1,concessionnaire camion lille,2023-06-01,2023-06-02,maps
+2,concessionnaire camion marseille,2023-06-01,2023-06-02,maps
+3,concessionnaire camion bordeaux,2023-06-01,2023-06-02,maps
+4,concessionnaire camion lyon,2023-06-01,2023-06-02,maps
+5,concessionnaire camion dijon,2023-06-01,2023-06-02,maps
+6,concessionnaire camion strasbourg,2023-06-01,2023-06-02,maps
+7,concessionnaire camion brest,2023-06-01,2023-06-02,maps
+8,concessionnaire camion nantes,2023-06-01,2023-06-02,maps

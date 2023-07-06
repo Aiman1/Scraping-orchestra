@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "scraping-orchestra"
+version = "0.1.0"
+description = "A scraping Master-slave system based on Google App Engine"
+authors = ["Aim"]
+readme = "README.md"
+packages = [{include = "scraping_orchestra"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.3.2"
+google = "^3.0.0"
+pandas = "^2.0.2"
+google-cloud-logging = "^3.5.0"
+google-cloud-storage = "^2.9.0"
+gunicorn = "^20.1.0"
+gcsfs = "^2023.6.0"
+pexpect = "^4.8.0"
+waitress = "^2.1.2"
+scrapfly-sdk = "^0.8.6"
+parsel = "^1.8.1"
+selenium = "^4.10.0"
+playwright = "^1.35.0"
+chromedriver-binary = "^114.0.5735.90.0"
+install-playwright = "^0.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
