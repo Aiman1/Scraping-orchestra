@@ -17,13 +17,13 @@ class Slave(GCloudConnection):
         df.to_csv(url, sep='|')
         logging.info(f"{filename} stored succesfully")
 
-    def scrape(self, job, is_maps = False):
+    def scrape(self, job, number_of_urls, is_maps = False):
         self.child.send("busy") #updates state to stop receiving more jobs
         try:
             if is_maps:
-                df = self.scraper.scrape_maps(job)
+                df = self.scraper.scrape_maps(job, number_of_urls)
             else :
-                df = self.scraper.scrape(job)
+                df = self.scraper.scrape(job, number_of_urls)
             self.child.send("idle")
         except Exception as ex:
             self.child.send("scraping-detected")
@@ -38,11 +38,12 @@ class Slave(GCloudConnection):
             job = self.child.recv()
             if job != None:
                 logging.info(f"Running job: {job}")
-                query, from_date, to_date, type = job.values()
+                print(f"Running job: {job}")
+                query, from_date, to_date, nb_results, type = job.values()
                 if type == "maps":
-                    df = self.scrape(job, is_maps=True)
+                    df = self.scrape(job, nb_results, is_maps=True)
                 else :
-                    df = self.scrape(job)
+                    df = self.scrape(job, nb_results)
                 if str(df) != "Failed":
                     self.store(df, self.scraper.filename(job))
             else:

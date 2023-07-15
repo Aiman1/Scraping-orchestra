@@ -45,13 +45,14 @@ class Master(GCloudConnection):
             url = self.URL + "/job?" + urlencode(job)
             requests.get(url, timeout=10)
             logging.info(f"Sending job = {job} to {url}")
+            print(f"Sending job = {job} to {url}")
         except Exception as e:
             print(e)
 
     def orchestrate(self):
         state = "started"
-        # while(len(self.pending_jobs) > 0 and state != "idle"):
-        while(True):
+        while(len(self.pending_jobs) > 0 or state != "idle"):
+        # while(True):
             state = self.check_slave_state()
             logging.info(f"Current state of slave: {state}")
             next_job_ready = False # wont change if state == "busy" or "no-answer"
@@ -63,7 +64,7 @@ class Master(GCloudConnection):
             elif state == "idle":
                 next_job_ready = True
             if next_job_ready:
-                self.current_job = self.pending_jobs.pop(0) if len(self.pending_jobs) > 0 else 0
+                self.current_job = self.pending_jobs.pop(0)
                 self.send_job(self.current_job)
             time.sleep(3)
 
@@ -79,4 +80,7 @@ if __name__ == "__main__":
         url = "http://127.0.0.1:8080" #local mode
     master = Master(url)
     master.import_jobs()
-    master.orchestrate()
+    try :
+        master.orchestrate()
+    except Exception as e:
+        print(e)
