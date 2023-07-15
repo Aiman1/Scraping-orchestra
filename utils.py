@@ -108,9 +108,9 @@ function load () {{
             page.wait_for_selector('[aria-label^="Résultats pour"]', timeout=10000)
             
             urls = page.evaluate( self.script.format(nb=number_of_urls) )
-            # on attend timeout seconds qu'il y ai assez de lien
+            # on attend timeout seconds qu'il y ai assez de liens
             # si moins que number_of_urls alors on retourne tout ce qu'il y a
-            timeout = 10   # [seconds]
+            timeout = 60*3   # [seconds]
             timeout_start = time.time()
             while ( time.time() < timeout_start + timeout ):
                 urls = page.evaluate( self.script.format(nb=number_of_urls) )
