@@ -1,5 +1,5 @@
 runtime: python38
-entrypoint: gunicorn -b :$PORT slave:app  --timeout 360000 --preload
+entrypoint: ./commands.sh
 env_variables:
   BUCKET: gs://scraper-gcloud-appengine #gcloud bucket where you want to store the outputs
   CLOUD: True #env variable which says whether the Slave is running locally or in the cloud

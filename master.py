@@ -77,7 +77,7 @@ class Master(GCloudConnection):
 if __name__ == "__main__":
     url = os.getenv("URL")
     if url is None:
-        url = "http://127.0.0.1:8080" #local mode
+        url = "https://prefab-mile-237211.nw.r.appspot.com" #local mode
     master = Master(url)
     master.import_jobs()
     try :

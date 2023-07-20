@@ -16,6 +16,8 @@ class GCloudConnection:
     def __init__(self, URL, LOG_NAME):
         # env variable declared only for gcloud authentication during local tests. Not necessary at deployed instances
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '../sandbox-azaki-a48d4c3efa57.json'
+        if "CLOUD" not in os.environ:
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '../prefab-mile-237211-20455cdbfdab.json'
         logging.getLogger().setLevel(logging.INFO)
         self.connect_cloud_services(LOG_NAME)
         self.URL = URL
